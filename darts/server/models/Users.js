@@ -3,11 +3,12 @@ const mongoose = require('mongoose');
 // const bcrypt = require('bcryptjs');
 const Schema = mongoose.Schema;
 
+// TODO
 // Needs password hashing
 // Needs stats connected to to each user
-
-// For now main user adds friends
-// Stats tracked through friends
+// Needs way to send friend request.
+// Needs authtoken
+// Need to attach user to stats
 
 const UserSchema = new Schema({
 	name: {
@@ -33,22 +34,9 @@ const UserSchema = new Schema({
 					type: String,
 					required: false,
 				},
-				stats: {
-					high: {
-						type: Number,
-						required: true,
-						default: 0,
-					},
-					out: {
-						type: Number,
-						required: true,
-						default: 0,
-					},
-					bestSetAverage: {
-						type: Number,
-						required: true,
-						default: 0,
-					},
+				token: {
+					type: String,
+					required: true,
 				},
 			},
 		},
