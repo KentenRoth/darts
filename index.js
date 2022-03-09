@@ -3,7 +3,7 @@ require('./mongoose');
 require('dotenv').config();
 const app = express();
 const port = process.env.PORT;
-const userRouter = require('./darts/server/routers/users');
+const userRouter = require('./darts/server/routers/user');
 
 app.use(function (req, res, next) {
 	res.header('Access-Control-Allow-Origin', '*');

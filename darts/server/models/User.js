@@ -1,14 +1,11 @@
 const mongoose = require('mongoose');
-// const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const Schema = mongoose.Schema;
 
 // TODO
-// Needs password hashing
 // Needs stats connected to to each user
 // Needs way to send friend request.
-// Needs authtoken
-// Need to attach user to stats
 
 const UserSchema = new Schema({
 	name: {
@@ -19,14 +16,14 @@ const UserSchema = new Schema({
 		type: String,
 		required: true,
 	},
-	// tokens: [
-	// 	{
-	// 		token: {
-	// 			type: String,
-	// 			required: true,
-	// 		},
-	// 	},
-	// ],
+	tokens: [
+		{
+			token: {
+				type: String,
+				required: true,
+			},
+		},
+	],
 	friends: [
 		{
 			friend: {
@@ -42,6 +39,19 @@ const UserSchema = new Schema({
 		},
 	],
 });
+
+UserSchema.methods.createAuthToken = async function () {
+	const user = this;
+	const token = jwt.sign(
+		{ _id: user._id.toString() },
+		process.env.HIDDEN_SENTENCE
+	);
+
+	user.tokens = user.tokens.concat({ token });
+	await user.save();
+
+	return token;
+};
 
 UserSchema.pre('save', async function (next) {
 	const user = this;
