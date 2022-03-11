@@ -28,6 +28,11 @@ const StatsScheme = new Schema({
 		default: '0-0',
 		trim: true,
 	},
+	owner: {
+		type: mongoose.Schema.Types.ObjectId,
+		requied: true,
+		ref: 'User',
+	},
 });
 
 module.exports = Stats = mongoose.model('Stats', StatsScheme);
