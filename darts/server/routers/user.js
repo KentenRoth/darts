@@ -1,5 +1,6 @@
 const express = require('express');
 const router = new express.Router();
+const auth = require('../middleware/auth');
 const User = require('../models/User');
 
 router.post('/users', async (req, res) => {
@@ -49,6 +50,10 @@ router.post('/users/logoutAll', auth, async (req, res) => {
 	} catch (error) {
 		res.status(500).send();
 	}
+});
+
+router.get('/users/me', auth, async (req, res) => {
+	res.send(req.user);
 });
 
 module.exports = router;
