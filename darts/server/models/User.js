@@ -25,16 +25,16 @@ const UserSchema = new Schema({
 			},
 		},
 	],
+	pin: {
+		type: String,
+		required: true,
+	},
 	friends: [
 		{
 			friend: {
 				name: {
 					type: String,
 					required: false,
-				},
-				token: {
-					type: String,
-					required: true,
 				},
 			},
 		},
