@@ -1,7 +1,9 @@
 const express = require('express');
 const router = new express.Router();
+const MongoClient = require('mongodb').MongoClient;
 const auth = require('../middleware/auth');
 const User = require('../models/User');
+const Friends = require('../models/Friends');
 
 router.post('/users', async (req, res) => {
 	const user = new User(req.body);
@@ -50,6 +52,45 @@ router.post('/users/logoutAll', auth, async (req, res) => {
 	} catch (error) {
 		res.status(500).send();
 	}
+});
+
+router.get('/friendsRequest', auth, async (req, res) => {
+	MongoClient.connect(process.env.MONGODB_URL, async (err, client) => {
+		const db = client.db('darts-api');
+		let myFriend = await db.collection('users').findOne({
+			name: req.body.name,
+		});
+		let noDuplicates = await db
+			.collection('friends')
+			.find({
+				$or: [
+					{
+						request: req.user._id,
+						recipient: myFriend._id,
+					},
+					{
+						request: myFriend._id,
+						recipient: req.user._id,
+					},
+				],
+			})
+			.toArray();
+		if (noDuplicates.length > 0) {
+			return res.status(200).send('Has prior request');
+		}
+
+		const friend = new Friends({
+			request: req.user._id,
+			recipient: myFriend._id,
+			status: 1,
+		});
+		try {
+			await friend.save();
+			res.status(200).send(friend);
+		} catch (error) {
+			res.status(400).send();
+		}
+	});
 });
 
 router.get('/users/me', auth, async (req, res) => {
