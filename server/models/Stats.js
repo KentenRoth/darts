@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// Need to attach stats to user
+// TODO
+// Future Games [cricket/cut-throat, 121, 6-11-bull, 100]
+// Getting last 10 set averages (for possible bot down the road)
 
 const StatsScheme = new Schema({
 	high: {
@@ -22,10 +24,16 @@ const StatsScheme = new Schema({
 		default: 0,
 		trim: true,
 	},
-	winLoss: {
-		type: String,
+	wins: {
+		type: Number,
 		required: true,
-		default: '0-0',
+		default: 0,
+		trim: true,
+	},
+	gamesPlayed: {
+		type: Number,
+		required: true,
+		default: 0,
 		trim: true,
 	},
 	owner: {

@@ -3,10 +3,6 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const Schema = mongoose.Schema;
 
-// TODO
-// Needs stats connected to to each user
-// Needs way to send friend request.
-
 const UserSchema = new Schema({
 	name: {
 		type: String,
