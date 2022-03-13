@@ -13,6 +13,7 @@ const FriendsSchema = new Schema({
 	status: {
 		type: Number,
 		enums: [
+			0, // Ignore
 			1, // Pending
 			2, // Rejected
 			3, // Accepted
