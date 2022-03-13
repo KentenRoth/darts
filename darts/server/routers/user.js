@@ -4,13 +4,16 @@ const MongoClient = require('mongodb').MongoClient;
 const auth = require('../middleware/auth');
 const User = require('../models/User');
 const Friends = require('../models/Friends');
+const Stats = require('../models/Stats');
 
 router.post('/users', async (req, res) => {
 	const user = new User(req.body);
-
 	try {
 		await user.save();
 		const authToken = await user.createAuthToken();
+		await new Stats({
+			owner: user._id,
+		}).save();
 
 		res.status(201).send({ user, authToken });
 	} catch (error) {
