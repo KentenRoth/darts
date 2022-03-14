@@ -7,6 +7,6 @@ const Friends = require('../models/Friends');
 // If rejected removes request from server
 // If accepted needs to update both users friends list - and remove request from server
 
-router.patch('/friendsRequest/:id', auth, async (req, res) => {});
+router.get('/friendsRequest/:id', auth, async (req, res) => {});
 
 module.exports = router;
