@@ -3,6 +3,9 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const Schema = mongoose.Schema;
 
+// TODO
+// Hash pin
+
 const UserSchema = new Schema({
 	name: {
 		type: String,
