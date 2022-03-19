@@ -66,16 +66,8 @@ router.get('/friendsRequest', auth, async (req, res) => {
 		let noDuplicates = await db
 			.collection('friends')
 			.find({
-				$or: [
-					{
-						request: req.user._id,
-						recipient: myFriend._id,
-					},
-					{
-						request: myFriend._id,
-						recipient: req.user._id,
-					},
-				],
+				request: req.user._id,
+				recipient: myFriend._id,
 			})
 			.toArray();
 		if (noDuplicates.length > 0) {
