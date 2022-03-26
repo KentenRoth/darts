@@ -18,7 +18,7 @@ class Sidebar extends React.Component {
 
 	render() {
 		return (
-			<div className="sideBar">
+			<aside className="sideBar">
 				<div className="sideBar_heading">
 					<h1>Kent</h1>
 				</div>
@@ -34,8 +34,7 @@ class Sidebar extends React.Component {
 					<h2 className="sideBar_friends__title">Friends</h2>
 					<ul>
 						<li>
-							Friend One
-							<button>+</button>
+							Friend One <button>+</button>
 						</li>
 						<li>
 							Friend Two <button>+</button>
@@ -51,7 +50,7 @@ class Sidebar extends React.Component {
 						</li>
 					</ul>
 				</div>
-			</div>
+			</aside>
 		);
 	}
 }

@@ -6,6 +6,7 @@
 
 html {
   box-sizing: border-box;
+  display: flex;
 }
 
 body {
@@ -47,6 +48,7 @@ body {
   background: #00a5b8;
   padding: 0.2rem;
   border-radius: 3px;
+  cursor: pointer;
 }
 .sideBar_stats__title, .sideBar_friends__title {
   padding-bottom: 1rem;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Gameboard extends React.Component {
+class X01 extends React.Component {
 	constructor(props) {
 		super(props);
 	}
@@ -12,10 +12,10 @@ class Gameboard extends React.Component {
 	render() {
 		return (
 			<div>
-				<h1>Gameboard</h1>
+				<h1>x01</h1>
 			</div>
 		);
 	}
 }
 
-export default Gameboard;
+export default X01;
