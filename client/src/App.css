@@ -1,10 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
 html {
   box-sizing: border-box;
 }
 
 body {
   background: linear-gradient(135deg, #001429 0%, #002642 100%);
-  color: white;
+  padding: 0;
+  margin: 0;
+}
+
+.sideBar {
+  color: #e6e6e6;
+  max-width: 350px;
+  height: 100vh;
+  border-right: solid 2px #00a5b8;
+  padding: 0 2rem;
+  overflow: scroll;
+}
+.sideBar_heading {
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+}
+.sideBar_stats, .sideBar_friends {
+  color: #bfbfbf;
+  padding: 2rem;
+}
+.sideBar_stats ul, .sideBar_friends ul {
+  list-style: none;
+}
+.sideBar_stats li, .sideBar_friends li {
+  padding: 0.4rem 0;
+  position: relative;
+  max-width: 250px;
+}
+.sideBar_stats li button, .sideBar_friends li button {
+  position: absolute;
+  right: 20px;
+  margin-left: 1rem;
+  color: #e6e6e6;
+  background: #00a5b8;
+  padding: 0.2rem;
+  border-radius: 3px;
+}
+.sideBar_stats__title, .sideBar_friends__title {
+  padding-bottom: 1rem;
 }
 
 /*# sourceMappingURL=app.css.map */

@@ -1,0 +1,37 @@
+@use '../_variables' as *
+
+.sideBar
+    color: $light-gray
+    max-width: 350px
+    height: 100vh
+    border-right: solid 2px $primary
+    padding: 0 2rem 
+    overflow: scroll
+
+    &_heading
+        display: flex
+        justify-content: center
+        padding-top: 2rem
+    
+    &_stats, &_friends
+        color: $mid-gray
+        padding: 2rem 
+
+        ul
+            list-style: none
+        li
+            padding: .4rem 0
+            position: relative
+            max-width: 250px
+
+            button
+                position: absolute
+                right: 20px
+                margin-left: 1rem
+                color: $light-gray
+                background: $primary
+                padding: .2rem
+                border-radius: 3px
+        &__title
+            padding-bottom: 1rem
+    
