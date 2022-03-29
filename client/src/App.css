@@ -4,9 +4,12 @@
   border: 0;
 }
 
+#root {
+  display: flex;
+}
+
 html {
   box-sizing: border-box;
-  display: flex;
 }
 
 body {
@@ -17,7 +20,7 @@ body {
 
 .sideBar {
   color: #e6e6e6;
-  max-width: 350px;
+  width: 250px;
   height: 100vh;
   border-right: solid 2px #00a5b8;
   padding: 0 2rem;
@@ -30,7 +33,7 @@ body {
 }
 .sideBar_stats, .sideBar_friends {
   color: #bfbfbf;
-  padding: 2rem;
+  padding: 2rem 0;
 }
 .sideBar_stats ul, .sideBar_friends ul {
   list-style: none;
@@ -52,6 +55,39 @@ body {
 }
 .sideBar_stats__title, .sideBar_friends__title {
   padding-bottom: 1rem;
+}
+
+.gameboard {
+  width: 100%;
+  padding-top: 2rem;
+}
+
+.playersBlock {
+  display: flex;
+  color: #e6e6e6;
+  flex-grow: 1;
+  justify-content: space-around;
+}
+
+.gamebar {
+  color: #e6e6e6;
+  width: 250px;
+  height: 100vh;
+  border-left: solid 2px #00a5b8;
+  padding: 0 2rem;
+  overflow: scroll;
+}
+.gamebar_heading {
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+}
+.gamebar ul {
+  list-style: none;
+  padding-top: 2rem;
+}
+.gamebar ul li {
+  padding: 0.4rem 0;
 }
 
 /*# sourceMappingURL=app.css.map */
