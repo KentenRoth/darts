@@ -57,18 +57,6 @@ body {
   padding-bottom: 1rem;
 }
 
-.gameboard {
-  width: 100%;
-  padding-top: 2rem;
-}
-
-.playersBlock {
-  display: flex;
-  color: #e6e6e6;
-  flex-grow: 1;
-  justify-content: space-around;
-}
-
 .gamebar {
   color: #e6e6e6;
   width: 250px;
@@ -88,6 +76,38 @@ body {
 }
 .gamebar ul li {
   padding: 0.4rem 0;
+}
+
+.x01_gameOption {
+  padding: 0.5rem 0 2rem 0;
+  text-align: center;
+}
+.x01_gameOption select {
+  padding: 0.2rem 1rem;
+  border: none;
+  border-radius: 5px;
+  margin-left: 1rem;
+}
+.x01_gameOption label {
+  font-weight: bold;
+  color: #e6e6e6;
+}
+.x01_title {
+  text-align: center;
+  padding-bottom: 2rem;
+  color: #e6e6e6;
+}
+
+.gameboard {
+  width: 100%;
+  padding-top: 2rem;
+}
+
+.playersBlock {
+  display: flex;
+  color: #e6e6e6;
+  flex-grow: 1;
+  justify-content: space-around;
 }
 
 /*# sourceMappingURL=app.css.map */
