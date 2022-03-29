@@ -1,4 +1,5 @@
 import React from 'react';
+import X01 from './Games/x01';
 
 class Gameboard extends React.Component {
 	constructor(props) {
@@ -11,8 +12,8 @@ class Gameboard extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<h1>Gameboard</h1>
+			<div className="gameboard">
+				<X01 />
 			</div>
 		);
 	}
