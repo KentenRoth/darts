@@ -110,4 +110,54 @@ body {
   justify-content: space-around;
 }
 
+.player {
+  display: block;
+}
+.player_title {
+  color: #bfbfbf;
+  text-align: center;
+}
+.player_score {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  font-size: 80px;
+}
+.player_inputs {
+  display: block;
+}
+.player_inputs input {
+  margin: 0.5rem;
+  max-width: 40px;
+  padding: 0.3rem 0.2rem;
+  border: none;
+  border-radius: 8px;
+}
+.player_inputs input::-webkit-outer-spin-button,
+.player_inputs input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.player_inputs input[type=number] {
+  -moz-appearance: textfield;
+}
+.player_submit {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
+}
+.player_submit button {
+  color: white;
+  padding: 0.5rem 1rem;
+  background: #00a5b8;
+  border: none;
+  border-radius: 10px;
+}
+.player_scoringAvg {
+  margin-top: 1rem;
+}
+.player_history {
+  margin-top: 5rem;
+}
+
 /*# sourceMappingURL=app.css.map */

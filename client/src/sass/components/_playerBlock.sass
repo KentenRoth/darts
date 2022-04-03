@@ -5,3 +5,45 @@
     color: $light-gray
     flex-grow: 1
     justify-content: space-around
+
+.player
+    display: block
+
+    &_title
+        color: $mid-gray
+        text-align: center
+
+    &_score
+        text-align: center
+        font-weight: bold
+        margin-top: .5rem
+        font-size: 80px
+
+    &_inputs
+        display: block
+        input
+            margin: .5rem
+            max-width: 40px
+            padding: .3rem .2rem
+            border: none
+            border-radius: 8px
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button
+            -webkit-appearance: none
+            margin: 0
+        input[type=number] 
+            -moz-appearance: textfield
+    &_submit
+        margin-top: .5rem
+        display: flex
+        justify-content: center
+        button
+            color: white
+            padding: .5rem 1rem
+            background: $primary
+            border: none
+            border-radius: 10px
+    &_scoringAvg
+        margin-top: 1rem
+    &_history
+        margin-top: 5rem

@@ -6,16 +6,48 @@ class X01 extends React.Component {
 		super(props);
 
 		this.state = {
-			addedPlayers: ['Kent', 'Kent 2', 'Kent 3', 'Kent 4'],
+			addedPlayers: [
+				{ name: 'Kent', score: 301, throw: true },
+				{ name: 'Kent 2', score: 301, throw: false },
+			],
 			game: 301,
+			count: 0,
 		};
 	}
 
 	componentDidMount() {}
 
 	gameSelected = (e) => {
+		let newGameScore = this.state.addedPlayers;
+		newGameScore.map((player) => {
+			return (player.score = parseInt(e.target.value));
+		});
 		this.setState({
 			game: parseInt(e.target.value),
+			addedPlayers: newGameScore,
+		});
+	};
+
+	updateScore = (i, score) => {
+		console.log(i, score);
+		let newCount = this.state.count;
+		if (newCount + 1 === this.state.addedPlayers.length) {
+			newCount = 0;
+		}
+
+		console.log(this.state.addedPlayers);
+		let updatedPlayer = this.state.addedPlayers.map((player, index) => {
+			if (index === i) {
+				player.score = player.score - score;
+				player.throw = !player.throw;
+			}
+			if (i + 1 === index) {
+				player.throw = !player.throw;
+			}
+			this.setState({
+				addedPlayers: updatedPlayer,
+				count: newCount,
+			});
 		});
 	};
 
@@ -46,8 +78,15 @@ class X01 extends React.Component {
 				</div>
 
 				<div className="playersBlock">
-					{this.state.addedPlayers.map((player) => {
-						return <PlayerBlock player={player} />;
+					{this.state.addedPlayers.map((player, index) => {
+						return (
+							<PlayerBlock
+								player={player}
+								num={index}
+								updateScore={this.updateScore}
+								game={this.state.game}
+							/>
+						);
 					})}
 				</div>
 			</div>

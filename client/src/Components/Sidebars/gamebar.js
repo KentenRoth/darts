@@ -7,9 +7,9 @@ class Gamebar extends React.Component {
 				<h2 className="gamebar_heading">Games</h2>
 				<ul>
 					<li>X01</li>
-					<li>Cricket</li>
-					<li>6-11-bull</li>
-					<li>100 at X</li>
+					<li>Cricket (Work In Progress)</li>
+					<li>6-11-bull (Coming Soon)</li>
+					<li>100 at X (Coming Soon)</li>
 				</ul>
 			</div>
 		);
