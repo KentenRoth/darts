@@ -112,6 +112,8 @@ body {
 
 .player {
   display: block;
+  opacity: 0.5;
+  pointer-events: none;
 }
 .player_title {
   color: #bfbfbf;
@@ -158,6 +160,12 @@ body {
 }
 .player_history {
   margin-top: 5rem;
+}
+
+.active {
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /*# sourceMappingURL=app.css.map */

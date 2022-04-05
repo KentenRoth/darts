@@ -12,6 +12,7 @@ class PlayerBlock extends React.Component {
 			dartOne: 0,
 			dartTwo: 0,
 			dartThree: 0,
+			activeThrower: false,
 		};
 	}
 
@@ -22,10 +23,22 @@ class PlayerBlock extends React.Component {
 				currentScore: this.props.game,
 			});
 		}
+		if (this.props.player.thrower !== prevProps.player.thrower) {
+			this.setState({
+				activeThrower: !this.state.activeThrower,
+			});
+		}
 	}
 
 	handleFocus = (e) => {
 		e.target.select();
+		if (this.state[e.target.name] !== 0) {
+			this.setState({
+				currentScore:
+					parseInt(this.state.currentScore) +
+					parseInt(e.target.value),
+			});
+		}
 	};
 
 	handleChange = (e) => {
@@ -34,41 +47,52 @@ class PlayerBlock extends React.Component {
 		});
 	};
 
-	playerBusted = () => {};
+	playerBusted = () => {
+		let num = this.props.num;
+		return this.setState(
+			{
+				currentScore: this.props.player.score,
+				scoreHistory: [...this.state.scoreHistory, 0],
+				dartOne: 0,
+				dartTwo: 0,
+				dartThree: 0,
+			},
+			() => this.props.updateScore(num, 0)
+		);
+	};
+
 	submitScore = () => {
 		let num = this.props.num;
-		let dartOne = parseInt(this.state.dartOne);
-		let dartTwo = parseInt(this.state.dartTwo);
-		let dartThree = parseInt(this.state.dartThree);
-		let roundScore = dartOne + dartTwo + dartThree;
-
-		if (roundScore > this.state.currentScore) {
+		let { dartOne, dartTwo, dartThree } = this.state;
+		let roundScore =
+			parseInt(dartOne) + parseInt(dartTwo) + parseInt(dartThree);
+		if (roundScore > parseInt(this.props.player.score)) {
 			return this.playerBusted();
 		}
 
 		this.setState(
 			{
 				scoreHistory: [...this.state.scoreHistory, roundScore],
-				dartOne: '',
-				dartTwo: '',
-				dartThree: '',
+				dartOne: 0,
+				dartTwo: 0,
+				dartThree: 0,
 			},
 			() => {
+				console.log('running');
 				this.props.updateScore(num, roundScore);
 			}
 		);
 	};
 
 	scoreUpdate = (e) => {
-		let newScore = this.state.currentScore - parseInt(e.target.value);
-		console.log(newScore);
+		let newScore = this.state.currentScore - this.state[e.target.name];
+
 		this.setState({
 			currentScore: newScore,
 		});
 	};
 
 	setAverage = () => {
-		console.log('setAverage');
 		if (this.state.scoreHistory.length === 0) {
 			return 0;
 		}
@@ -79,8 +103,10 @@ class PlayerBlock extends React.Component {
 	};
 
 	render() {
+		let { thrower } = this.props.player;
+		console.log(this.props);
 		return (
-			<div className="player">
+			<div className={`player ${thrower ? 'active' : null}`}>
 				<div className="player_title">
 					<h1>{this.props.player.name}</h1>
 				</div>
@@ -118,7 +144,12 @@ class PlayerBlock extends React.Component {
 					/>
 				</div>
 				<div className="player_submit">
-					<button onClick={this.submitScore}>End Turn</button>
+					<button
+						onClick={this.submitScore}
+						disabled={thrower ? false : true}
+					>
+						End Turn
+					</button>
 				</div>
 				<div className="player_scoringAvg">
 					Set Average: {this.setAverage()}

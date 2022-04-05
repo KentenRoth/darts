@@ -8,6 +8,8 @@
 
 .player
     display: block
+    opacity: .5
+    pointer-events: none
 
     &_title
         color: $mid-gray
@@ -47,3 +49,8 @@
         margin-top: 1rem
     &_history
         margin-top: 5rem
+
+.active
+    display: block
+    opacity: 1
+    pointer-events: auto

@@ -7,15 +7,13 @@ class X01 extends React.Component {
 
 		this.state = {
 			addedPlayers: [
-				{ name: 'Kent', score: 301, throw: true },
-				{ name: 'Kent 2', score: 301, throw: false },
+				{ name: 'Kent', score: 301, thrower: true },
+				{ name: 'Kent 2', score: 301, thrower: false },
 			],
 			game: 301,
 			count: 0,
 		};
 	}
-
-	componentDidMount() {}
 
 	gameSelected = (e) => {
 		let newGameScore = this.state.addedPlayers;
@@ -29,25 +27,25 @@ class X01 extends React.Component {
 	};
 
 	updateScore = (i, score) => {
-		console.log(i, score);
 		let newCount = this.state.count;
 		if (newCount + 1 === this.state.addedPlayers.length) {
 			newCount = 0;
 		}
 
-		console.log(this.state.addedPlayers);
 		let updatedPlayer = this.state.addedPlayers.map((player, index) => {
 			if (index === i) {
 				player.score = player.score - score;
-				player.throw = !player.throw;
+				player.thrower = !player.thrower;
 			}
-			if (i + 1 === index) {
-				player.throw = !player.throw;
+			if (index === newCount + 1) {
+				player.thrower = !player.thrower;
 			}
-			this.setState({
-				addedPlayers: updatedPlayer,
-				count: newCount,
-			});
+
+			return player;
+		});
+		this.setState({
+			addedPlayers: updatedPlayer,
+			count: newCount,
 		});
 	};
 
@@ -79,6 +77,7 @@ class X01 extends React.Component {
 
 				<div className="playersBlock">
 					{this.state.addedPlayers.map((player, index) => {
+						console.log(player);
 						return (
 							<PlayerBlock
 								player={player}

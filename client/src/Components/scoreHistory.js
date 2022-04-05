@@ -1,7 +1,6 @@
 import React from 'react';
 
 const ScoreHistory = (props) => {
-	console.log(props);
 	let history;
 	if (props.history.length > 0) {
 		history = props.history.map((score, i) => {
