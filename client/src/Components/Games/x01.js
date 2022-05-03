@@ -27,25 +27,28 @@ class X01 extends React.Component {
 	};
 
 	updateScore = (i, score) => {
-		let newCount = this.state.count;
-		if (newCount + 1 === this.state.addedPlayers.length) {
-			newCount = 0;
-		}
-
 		let updatedPlayer = this.state.addedPlayers.map((player, index) => {
 			if (index === i) {
 				player.score = player.score - score;
-				player.thrower = !player.thrower;
 			}
-			if (index === newCount + 1) {
-				player.thrower = !player.thrower;
-			}
-
 			return player;
 		});
+		this.updateThrower(i);
 		this.setState({
 			addedPlayers: updatedPlayer,
-			count: newCount,
+		});
+	};
+
+	updateThrower = (i) => {
+		this.state.addedPlayers.map((player, index) => {
+			if (i === index || i + 1 === index) {
+				player.thrower = !player.thrower;
+			}
+			if (i + 1 === this.state.addedPlayers.length) {
+				if (index === 0) {
+					player.thrower = !player.thrower;
+				}
+			}
 		});
 	};
 
@@ -77,7 +80,6 @@ class X01 extends React.Component {
 
 				<div className="playersBlock">
 					{this.state.addedPlayers.map((player, index) => {
-						console.log(player);
 						return (
 							<PlayerBlock
 								player={player}

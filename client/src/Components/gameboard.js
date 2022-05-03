@@ -6,10 +6,6 @@ class Gameboard extends React.Component {
 		super(props);
 	}
 
-	componentDidMount() {
-		console.log('Mounted');
-	}
-
 	render() {
 		return (
 			<div className="gameboard">

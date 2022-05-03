@@ -104,7 +104,6 @@ class PlayerBlock extends React.Component {
 
 	render() {
 		let { thrower } = this.props.player;
-		console.log(this.props);
 		return (
 			<div className={`player ${thrower ? 'active' : null}`}>
 				<div className="player_title">
